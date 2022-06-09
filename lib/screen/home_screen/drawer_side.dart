@@ -50,7 +50,7 @@ class DrawerSide extends StatelessWidget {
                       ),
                       Container(
                         height: 30,
-                        child: OutlineButton(
+                        child: OutlinedButton(
                           onPressed: () {
                             Navigator.push(
                                 context,
@@ -58,9 +58,6 @@ class DrawerSide extends StatelessWidget {
                                     builder: (context) => SigIn()));
                           },
                           child: Text('Login'),
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(15),
-                              side: BorderSide(width: 2)),
                         ),
                       )
                     ],
