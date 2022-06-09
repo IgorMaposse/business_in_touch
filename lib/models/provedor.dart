@@ -1,4 +1,5 @@
 class Provedor {
   String id;
-  Provedor(this.id);
+  String nome;
+  Provedor(this.id,this.nome);
 }
