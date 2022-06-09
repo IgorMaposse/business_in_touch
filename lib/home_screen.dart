@@ -1,18 +1,73 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_firebase/config/color.dart';
+import 'package:flutter_firebase/screen/booking.dart';
+import 'package:flutter_firebase/screen/emprendora_formulario.dart';
 import 'package:flutter_firebase/screen/home_screen/drawer_side.dart';
 import 'package:flutter_firebase/screen/home_screen/singal_product.dart';
 import 'package:flutter_firebase/screen/product_over_view/product_overview.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
-  // Metodo1
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
 
+class _HomeScreenState extends State<HomeScreen> {
+  // Initial Selected Value
+  String dropdownvalue = 'Emprendedora';
+  // Metodo1
+  var items = [
+    'Emprendedora',
+    'Provedor',
+    'Cliente',
+  ];
   Widget _buildHerbsProduct(context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            DropdownButton(
+              // Initial Value
+              value: dropdownvalue,
+
+              // Down Arrow Icon
+              icon: const Icon(Icons.keyboard_arrow_down),
+
+              // Array list of items
+              items: items.map((String items) {
+                return DropdownMenuItem(
+                  value: items,
+                  child: Text(items),
+                );
+              }).toList(),
+              // After selecting the desired option,it will
+              // change button value to selected value
+              onChanged: (String? newValue) {
+                setState(() {
+                  dropdownvalue = newValue!;
+                });
+              },
+            ),
+            Container(
+              child: ElevatedButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                      Color(0xFFF27121),
+                    ),
+                  ),
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => EmprenderaFormulario()));
+                  },
+                  child: Text('Registar')),
+            ),
+          ],
+        ),
         Padding(
           padding: const EdgeInsets.symmetric(vertical: 20),
           child: Row(
@@ -69,7 +124,6 @@ class HomeScreen extends StatelessWidget {
   }
 
   //<<<<<<>>>>>>>>>>>>>>  Metodo Feshproducts <<<<<>>>>>>>>>>.>>>>>>
-
   Widget _buildFreshProduct() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,7 +165,6 @@ class HomeScreen extends StatelessWidget {
   }
 
 //<<<<<<>>>>>>>>>>>>>>  Metodo para Feshproducts <<<<<>>>>>>>>>>.>>>>>>
-
   Widget _buildRootProducts(context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -211,7 +264,7 @@ class HomeScreen extends StatelessWidget {
                                 child: Icon(
                                   Icons.arrow_drop_down,
                                   size: 20,
-                                  color: Colors.yellow,
+                                  color: Color(0xFFF27121),
                                 ),
                               ),
                             ],
@@ -266,9 +319,7 @@ class HomeScreen extends StatelessWidget {
             ),
           ),
         ],
-        backgroundColor: const Color(
-          0xffd6b738,
-        ),
+        backgroundColor: const Color(0xFFF27121),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),

@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_firebase/app_widget.dart';
-import 'package:flutter_firebase/config/color.dart';
-import 'package:flutter_firebase/home_screen.dart';
 import 'package:flutter_firebase/screen/home_screen/sign_in.dart';
 import 'package:flutter_firebase/screen/login_screen.dart';
 
